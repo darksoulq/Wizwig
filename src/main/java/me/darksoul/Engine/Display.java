@@ -14,7 +14,7 @@ public class Display {
     private static double lastFrameTime;
     private static double deltaTime;
 
-    public static void create(int width, int height, String title) {
+    public static void create(int width, int height, String title, long fullScreen) {
         Display.width = width;
         Display.height = height;
         Display.title = title;
@@ -26,7 +26,7 @@ public class Display {
         GLFW.glfwWindowHint(GLFW.GLFW_VISIBLE, GLFW.GLFW_FALSE);
         GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GLFW.GLFW_TRUE);
 
-        window = GLFW.glfwCreateWindow(width, height, title, MemoryUtil.NULL, MemoryUtil.NULL);
+        window = GLFW.glfwCreateWindow(width, height, title, fullScreen, MemoryUtil.NULL);
         if (window == MemoryUtil.NULL) {
             throw new RuntimeException("Failed to create the GLFW window");
         }

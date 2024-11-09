@@ -16,6 +16,7 @@ public class Input {
     private static boolean[] keysPressed = new boolean[GLFW_KEY_LAST];
 
     private static boolean[] mouseButtons = new boolean[GLFW_MOUSE_BUTTON_LAST];
+    private static boolean[] mouseButtonsPressed = new boolean[GLFW_MOUSE_BUTTON_LAST];
     private static double mouseX, mouseY;
 
     public static void init(long windowHandle) {
@@ -38,6 +39,7 @@ public class Input {
             public void invoke(long window, int button, int action, int mods) {
                 if (action == GLFW_PRESS) {
                     mouseButtons[button] = true;
+                    mouseButtonsPressed[button] = true;
                 } else if (action == GLFW_RELEASE) {
                     mouseButtons[button] = false;
                 }
@@ -66,6 +68,11 @@ public class Input {
                 keysPressed[i] = false;
             }
         }
+        for (int i = 0; i < mouseButtonsPressed.length; i++) {
+            if (mouseButtonsPressed[i]) {
+                mouseButtonsPressed[i] = false;
+            }
+        }
     }
 
     public static boolean isKeyPressed(int key) {
@@ -78,6 +85,10 @@ public class Input {
 
     public static boolean isMouseButtonPressed(int button) {
         return mouseButtons[button];
+    }
+
+    public static boolean isMouseButtonJustPressed(int button) {
+        return mouseButtonsPressed[button];
     }
 
     public static double getMouseX() {
