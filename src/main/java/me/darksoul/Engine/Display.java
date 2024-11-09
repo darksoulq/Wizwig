@@ -72,4 +72,8 @@ public class Display {
     private static double getCurrentTime() {
         return GLFW.glfwGetTime();
     }
+
+    public static long getWindow() {
+        return window;
+    }
 }
