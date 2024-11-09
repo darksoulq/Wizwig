@@ -37,3 +37,10 @@ jobs:
       # Step 4: Build with Maven
       - name: Build with Maven
         run: mvn clean package
+
+      # Step 5: Upload build artifacts
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: target/*.jar
