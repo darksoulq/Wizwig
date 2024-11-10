@@ -4,7 +4,7 @@ import me.darksoul.Engine.Events.Cancellable;
 import me.darksoul.Engine.Events.Event;
 
 public class InitEvent extends Event implements Cancellable {
-    private String message;
+    private final String message;
     private boolean cancelled = false;
 
     public InitEvent(String message) {

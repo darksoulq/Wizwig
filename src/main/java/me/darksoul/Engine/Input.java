@@ -1,22 +1,16 @@
 package me.darksoul.Engine;
 
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWKeyCallback;
-import org.lwjgl.glfw.GLFWMouseButtonCallback;
-import org.lwjgl.glfw.GLFWCursorPosCallback;
-import org.lwjgl.glfw.GLFWCursorEnterCallback;
+import org.lwjgl.glfw.*;
 
 import static org.lwjgl.glfw.GLFW.*;
 
 public class Input {
 
+    private static final boolean[] keys = new boolean[GLFW_KEY_LAST];
+    private static final boolean[] keysPressed = new boolean[GLFW_KEY_LAST];
+    private static final boolean[] mouseButtons = new boolean[GLFW_MOUSE_BUTTON_LAST];
+    private static final boolean[] mouseButtonsPressed = new boolean[GLFW_MOUSE_BUTTON_LAST];
     private static long window;
-
-    private static boolean[] keys = new boolean[GLFW_KEY_LAST];
-    private static boolean[] keysPressed = new boolean[GLFW_KEY_LAST];
-
-    private static boolean[] mouseButtons = new boolean[GLFW_MOUSE_BUTTON_LAST];
-    private static boolean[] mouseButtonsPressed = new boolean[GLFW_MOUSE_BUTTON_LAST];
     private static double mouseX, mouseY;
 
     public static void init(long windowHandle) {
